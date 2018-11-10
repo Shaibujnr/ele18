@@ -4,10 +4,10 @@
     tools:context="com.easytekk.ele18.MainActivity">
     <item
         android:id="@+id/action_logout"
-        android:title="@string/action_logout"
+        android:title="@string/menu_logout"
         app:showAsAction="never" />
     <item
         android:id="@+id/action_change_password"
-        android:title="@string/action_change_password"
+        android:title="@string/menu_change_password"
         app:showAsAction="never" />
 </menu>
