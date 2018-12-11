@@ -137,7 +137,7 @@ public class ProfileFragment extends Fragment {
                             bio.setText(dataSnapshot.child("bio").getValue().toString());
                         }else{
                             student.setBio("");
-                            bio.setText(dataSnapshot.child("bio").getValue().toString());
+                            bio.setText("");
                         }
 
                         
