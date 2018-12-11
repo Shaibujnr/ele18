@@ -94,6 +94,28 @@ public class MainActivity extends AppCompatActivity implements StudentsFragment.
             }
         });
 
+        mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                if(position != 0){
+                    fab.setVisibility(View.GONE);
+                }
+                else{
+                    fab.setVisibility(View.VISIBLE);
+                }
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
+
     }
 
 
@@ -258,5 +280,7 @@ public class MainActivity extends AppCompatActivity implements StudentsFragment.
             }
             return null;
         }
+
+
     }
 }
