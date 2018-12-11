@@ -1,6 +1,7 @@
 package com.easytekk.ele18.models;
 
 import android.net.Uri;
+import android.os.Parcelable;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -8,11 +9,13 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.io.Serializable;
+
 /**
  * Created by shaibu on 11/9/18.
  */
 
-public class Student {
+public class Student implements Serializable{
     private String id;
     private String matric_number;
     private String name;

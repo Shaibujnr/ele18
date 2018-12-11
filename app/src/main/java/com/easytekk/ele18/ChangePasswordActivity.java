@@ -29,7 +29,6 @@ public class ChangePasswordActivity extends AppCompatActivity {
     private EditText mConfirmPasswordView;
     private View mProgressView;
     private View mChangePasswordFormView;
-    private Student currentStudent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +41,7 @@ public class ChangePasswordActivity extends AppCompatActivity {
 
         mConfirmPasswordView = (EditText) findViewById(R.id.confirm_password);
 
-        currentStudent = new Helper(this).getStudent();
+
 
         Button mChangePasswordButton = (Button) findViewById(R.id.change_password_button);
         mChangePasswordButton.setOnClickListener(new View.OnClickListener() {
@@ -93,7 +92,7 @@ public class ChangePasswordActivity extends AppCompatActivity {
             focusView = mConfirmPasswordView;
             cancel = true;
         }
-        if(!old_password.equals(currentStudent.getPassword())){
+        if(!old_password.equals(new Helper(this).getCurrentStudentPassword())){
             mOldPasswordView.setError("Wrong password");
             focusView = mOldPasswordView;
             cancel = true;
@@ -118,7 +117,7 @@ public class ChangePasswordActivity extends AppCompatActivity {
             // perform the user login attempt.
             showProgress(true);
             DatabaseReference db = FirebaseDatabase.getInstance().getReference("students");
-            db.child(currentStudent.getId()).child("pin")
+            db.child(new Helper(this).getCurrentStudentId()).child("pin")
                     .setValue(new_password).addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override
                 public void onComplete(@NonNull Task<Void> task) {

@@ -1,45 +1,84 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.easytekk.ele18.MainActivity$PlaceholderFragment"
+    tools:context="com.easytekk.ele18.ProfileFragment"
     android:weightSum="1">
-    <ScrollView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:orientation="vertical">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="250dp">
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/profile_image"/>
+            <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:id="@+id/profile_photo_progress"
+                android:visibility="gone"/>
+        </RelativeLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="10dp"
+            android:orientation="horizontal">
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:text="Change Photo"
+                android:id="@+id/profile_btn_change_photo"
+                android:layout_marginEnd="2dp"
+                android:layout_marginRight="2dp"
+                android:background="@android:color/holo_blue_dark"/>
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:text="Remove Photo"
+                android:id="@+id/profile_btn_remove_photo"
+                android:background="@android:color/holo_red_light"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:src="@drawable/name"/>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="8"
+                android:text="Student Full Name"
+                android:paddingTop="15dp"
+                android:paddingLeft="5dp"
+                android:fontFamily="serif-monospace"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:id="@+id/profile_name"/>
+        </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:orientation="vertical">
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="250dp"
-                android:id="@+id/profile_image"
-                android:src="@drawable/male"/>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:orientation="horizontal">
-                <ImageView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:src="@drawable/name"/>
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="8"
-                    android:text="Student Full Name"
-                    android:paddingTop="15dp"
-                    android:paddingLeft="5dp"
-                    android:fontFamily="serif-monospace"
-                    android:textStyle="bold"
-                    android:textSize="20sp"
-                    android:id="@+id/profile_name"/>
-
-            </LinearLayout>
+            android:orientation="vertical"
+            android:id="@+id/details_container">
+            <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:id="@+id/profile_details_progress"
+                android:visibility="gone"/>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
@@ -60,13 +99,6 @@
                     android:fontFamily="serif-monospace"
                     android:textStyle="normal"
                     android:id="@+id/profile_nick"/>
-                <ImageView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:src="@drawable/edit"
-                    android:id="@+id/profile_nick_edit"/>
-
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -131,13 +163,6 @@
                     android:fontFamily="serif-monospace"
                     android:textStyle="normal"
                     android:id="@+id/profile_email"/>
-                <ImageView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:src="@drawable/edit"
-                    android:id="@+id/profile_email_edit"/>
-
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -159,13 +184,6 @@
                     android:textStyle="normal"
                     android:textSize="15sp"
                     android:id="@+id/profile_phone"/>
-                <ImageView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:src="@drawable/edit"
-                    android:id="@+id/profile_phone_edit"/>
-
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -187,13 +205,6 @@
                     android:fontFamily="serif-monospace"
                     android:textStyle="normal"
                     android:id="@+id/profile_facebook"/>
-                <ImageView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:src="@drawable/edit"
-                    android:id="@+id/profile_facebook_edit"/>
-
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -215,13 +226,6 @@
                     android:fontFamily="serif-monospace"
                     android:textStyle="normal"
                     android:id="@+id/profile_twitter"/>
-                <ImageView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:src="@drawable/edit"
-                    android:id="@+id/profile_twitter_edit"/>
-
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -243,13 +247,6 @@
                     android:textStyle="normal"
                     android:text="linkedin_username"
                     android:id="@+id/profile_linkedin"/>
-                <ImageView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:src="@drawable/edit"
-                    android:id="@+id/profile_linkedin_edit"/>
-
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -271,13 +268,6 @@
                     android:fontFamily="serif-monospace"
                     android:textStyle="normal"
                     android:id="@+id/profile_instagram"/>
-                <ImageView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:src="@drawable/edit"
-                    android:id="@+id/profile_instagram_edit"/>
-
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -299,13 +289,6 @@
                     android:fontFamily="serif-monospace"
                     android:textStyle="normal"
                     android:id="@+id/profile_snapchat"/>
-                <ImageView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:src="@drawable/edit"
-                    android:id="@+id/profile_snapchat_edit"/>
-
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -327,25 +310,10 @@
                     android:fontFamily="serif-monospace"
                     android:textStyle="normal"
                     android:id="@+id/profile_bio"/>
-                <ImageView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:src="@drawable/edit"
-                    android:id="@+id/profile_bio_edit"/>
             </LinearLayout>
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="100dp"/>
         </LinearLayout>
-    </ScrollView>
-    <ImageView
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:src="@drawable/picture"
-        android:id="@+id/profile_edit_picture"/>
-
-</RelativeLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="100dp"/>
+    </LinearLayout>
+</ScrollView>

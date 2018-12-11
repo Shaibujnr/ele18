@@ -54,6 +54,7 @@ public class LoginActivity extends AppCompatActivity{
     private View mProgressView;
     private View mLoginFormView;
     private View rootView;
+    private Student student;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -119,34 +120,7 @@ public class LoginActivity extends AppCompatActivity{
                     if(dataSnapshot.exists()){
                         String dpassword = dataSnapshot.child("pin").getValue().toString();
                         if(dpassword.equals(password)){
-                            String gender = dataSnapshot.child("gender").getValue().toString();
-                            Student currentStudent = new Student();
-                            currentStudent.setId(matric);
-                            currentStudent.setMatric_number(dataSnapshot.child("matric").getValue().toString());
-                            currentStudent.setName(dataSnapshot.child("name").getValue().toString());
-                            currentStudent.setPhone_number(dataSnapshot.child("phone").getValue().toString());
-                            currentStudent.setEmail(dataSnapshot.child("email").getValue().toString());
-                            currentStudent.setNick(dataSnapshot.child("nick").getValue().toString());
-                            currentStudent.setGender(gender);
-                            currentStudent.setPassword(dataSnapshot.child("pin").getValue().toString());
-                            String resource_uri = String.
-                                    format("android.resource://com.easytekk.ele18/drawable/%s",
-                                            gender.toLowerCase());
-                            currentStudent.setFacebook_username(dataSnapshot.child("facebook")
-                            .getValue().toString());
-                            currentStudent.setInstagram_username(dataSnapshot.child("instagram")
-                            .getValue().toString());
-                            currentStudent.setSnapchat_username(dataSnapshot.child("snapchat")
-                            .getValue().toString());
-                            currentStudent.setTwitter_username(dataSnapshot.child("twitter")
-                            .getValue().toString());
-                            currentStudent.setLinkedin_username(dataSnapshot.child("linkedin")
-                            .getValue().toString());
-                            currentStudent.setProfile_picture(Uri.parse(resource_uri));
-                            new Helper(LoginActivity.this).storeStudent(currentStudent);
-                            PreferenceManager
-                                    .getDefaultSharedPreferences(LoginActivity.this)
-                                    .edit().putString("logged_in_student_id", matric).apply();
+                            new Helper(LoginActivity.this).persistStudentInfo(matric, dpassword);
                             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
