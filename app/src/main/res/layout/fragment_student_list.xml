@@ -29,6 +29,8 @@
         android:id="@+id/list"
         app:layoutManager="LinearLayoutManager"
         tools:context="com.easytekk.ele18.StudentsFragment"
-        tools:listitem="@layout/fragment_student" />
+        tools:listitem="@layout/fragment_student"
+        android:paddingBottom="100dp"
+        android:clipToPadding="false"/>
 </RelativeLayout>
 

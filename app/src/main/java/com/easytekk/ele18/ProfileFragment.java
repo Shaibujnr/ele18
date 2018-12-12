@@ -79,9 +79,8 @@ public class ProfileFragment extends Fragment {
         detailProgress = v.findViewById(R.id.profile_details_progress);
         dc = v.findViewById(R.id.details_container);
 
-        photoProgress.setVisibility(View.VISIBLE);
-        changePhoto.setEnabled(false);
-        removePhoto.setEnabled(false);
+        showPictureProgress(true);
+        showDetailsProgress(true);
 
         changePhoto.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -154,12 +153,8 @@ public class ProfileFragment extends Fragment {
                                     .into(profile_picture);
                         }
 
-                        photoProgress.setVisibility(View.GONE);
-                        changePhoto.setEnabled(true);
-                        removePhoto.setEnabled(true);
-
-                        MainActivity activity = (MainActivity) getActivity();
-                        activity.activateFab();
+                        showPictureProgress(false);
+                        showDetailsProgress(false);
                     }
 
                     @Override
@@ -171,14 +166,14 @@ public class ProfileFragment extends Fragment {
     }
 
     public void updateProfilePhoto(final Uri photo_uri){
-        photoProgress.setVisibility(View.VISIBLE);
+        showPictureProgress(true);
         StorageReference ref = FirebaseStorage.getInstance().getReference("profile_photos");
         final StorageReference imgref = ref.child(new Helper(getContext()).getCurrentStudentId()+".jpg");
         UploadTask uploadTask = imgref.putFile(photo_uri);
         uploadTask.addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-                photoProgress.setVisibility(View.GONE);
+                showPictureProgress(false);
                 Snackbar.make(profile_picture, "Unable to upload image", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
@@ -191,7 +186,7 @@ public class ProfileFragment extends Fragment {
                 DatabaseReference dbref = db.getReference("students");
                 dbref.child(new Helper(getContext()).getCurrentStudentId()).child("profile_photo")
                         .setValue(url);
-                photoProgress.setVisibility(View.GONE);
+                showPictureProgress(false);
                 Glide.with(getContext()).load(photo_uri).into(profile_picture);
                 Snackbar.make(profile_picture, "Successfully uploaded image", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
@@ -220,12 +215,7 @@ public class ProfileFragment extends Fragment {
     }
 
     public void updateProfileDetails(){
-        changePhoto.setEnabled(false);
-        removePhoto.setEnabled(false);
-        dc.setVisibility(View.GONE);
-        detailProgress.setVisibility(View.VISIBLE);
-        MainActivity activity = (MainActivity) getActivity();
-        activity.deactivateFab();
+        showDetailsProgress(true);
 
         FirebaseDatabase db = FirebaseDatabase.getInstance();
         DatabaseReference dbref = db.getReference("students");
@@ -274,12 +264,7 @@ public class ProfileFragment extends Fragment {
                             bio.setText(dataSnapshot.child("bio").getValue().toString());
                         }
 
-                        changePhoto.setEnabled(true);
-                        removePhoto.setEnabled(true);
-                        dc.setVisibility(View.VISIBLE);
-                        detailProgress.setVisibility(View.GONE);
-                        MainActivity activity = (MainActivity) getActivity();
-                        activity.activateFab();
+                        showDetailsProgress(false);
                     }
 
                     @Override
@@ -288,5 +273,39 @@ public class ProfileFragment extends Fragment {
                     }
                 });
 
+    }
+
+    public void showPictureProgress(boolean b){
+        MainActivity activity = (MainActivity) getActivity();
+        if(b){
+            activity.deactivateFab();
+            photoProgress.setVisibility(View.VISIBLE);
+            changePhoto.setEnabled(false);
+            removePhoto.setEnabled(false);
+        }
+        else{
+            activity.activateFab();
+            photoProgress.setVisibility(View.GONE);
+            changePhoto.setEnabled(true);
+            removePhoto.setEnabled(true);
+        }
+    }
+
+    public void showDetailsProgress(boolean b){
+        MainActivity activity = (MainActivity) getActivity();
+        if(b){
+            changePhoto.setEnabled(false);
+            removePhoto.setEnabled(false);
+            dc.setVisibility(View.GONE);
+            detailProgress.setVisibility(View.VISIBLE);
+            activity.deactivateFab();
+        }
+        else{
+            changePhoto.setEnabled(true);
+            removePhoto.setEnabled(true);
+            dc.setVisibility(View.VISIBLE);
+            detailProgress.setVisibility(View.GONE);
+            activity.activateFab();
+        }
     }
 }

@@ -7,6 +7,7 @@ import android.net.Uri;
 import android.preference.PreferenceManager;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.design.widget.TabLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
@@ -60,6 +61,7 @@ public class MainActivity extends AppCompatActivity implements StudentsFragment.
     private FloatingActionButton fab;
 
     private ProfileFragment mProfileFragment;
+    private TabLayout tabLayout;
 
 
 
@@ -115,6 +117,11 @@ public class MainActivity extends AppCompatActivity implements StudentsFragment.
 
             }
         });
+
+        tabLayout = (TabLayout) findViewById(R.id.sliding_tabs);
+        tabLayout.setupWithViewPager(mViewPager);
+        tabLayout.getTabAt(0).setIcon(R.drawable.profileicon);
+        tabLayout.getTabAt(1).setIcon(R.drawable.classicon);
 
     }
 
@@ -272,12 +279,12 @@ public class MainActivity extends AppCompatActivity implements StudentsFragment.
 
         @Override
         public CharSequence getPageTitle(int position) {
-            switch (position) {
-                case 0:
-                    return "Profile";
-                case 1:
-                    return "Class";
-            }
+//            switch (position) {
+//                case 0:
+//                    return "Profile";
+//                case 1:
+//                    return "Class";
+//            }
             return null;
         }
 

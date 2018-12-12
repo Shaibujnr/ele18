@@ -153,7 +153,35 @@ public class StudentsFragment extends Fragment {
 
             @Override
             public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-
+                String id = dataSnapshot.getKey();
+                Student ss = new Student();
+                ss.setId(id);
+                ss.setName(dataSnapshot.child("name").getValue().toString());
+                ss.setEmail(dataSnapshot.child("email").getValue().toString());
+                ss.setNick(dataSnapshot.child("nick").getValue().toString());
+                ss.setMatric_number(dataSnapshot.child("matric").getValue().toString());
+                ss.setPhone_number(dataSnapshot.child("phone").getValue().toString());
+                ss.setGender(dataSnapshot.child("gender").getValue().toString());
+                ss.setFacebook_username(dataSnapshot.child("facebook").getValue().toString());
+                ss.setTwitter_username(dataSnapshot.child("twitter").getValue().toString());
+                ss.setLinkedin_username(dataSnapshot.child("linkedin").getValue().toString());
+                ss.setInstagram_username(dataSnapshot.child("instagram").getValue().toString());
+                ss.setSnapchat_username(dataSnapshot.child("snapchat").getValue().toString());
+                ss.setPassword(dataSnapshot.child("pin").getValue().toString());
+                if(dataSnapshot.child("bio").exists()){
+                    ss.setBio(dataSnapshot.child("bio").getValue().toString());
+                }
+                if(dataSnapshot.child("profile_photo").exists()){
+                    ss.setProfile_picture(
+                            Uri.parse(dataSnapshot.child("profile_photo").getValue().toString())
+                    );
+                }
+                if(dataSnapshot.child("email").exists()){
+                    ss.setEmail(dataSnapshot.child("email").getValue().toString());
+                }
+                adapter.updateStudent(ss);
+                Log.d("FRAG_ON_CHILD_CHANGED", dataSnapshot.getKey());
+                Log.d("FRAG_ON_CHILD_CHANGED_S", s);
             }
 
             @Override

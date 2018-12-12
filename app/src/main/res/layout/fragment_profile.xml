@@ -8,7 +8,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="10dp"
+        android:padding="5dp"
         android:orientation="vertical">
         <RelativeLayout
             android:layout_width="match_parent"
@@ -16,6 +16,7 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:scaleType="fitCenter"
                 android:id="@+id/profile_image"/>
             <ProgressBar
                 android:layout_width="wrap_content"
@@ -38,7 +39,7 @@
                 android:id="@+id/profile_btn_change_photo"
                 android:layout_marginEnd="2dp"
                 android:layout_marginRight="2dp"
-                android:background="@android:color/holo_blue_dark"/>
+                android:background="#34495e"/>
             <Button
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -55,11 +56,13 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:layout_marginRight="3dp"
+                android:layout_marginEnd="3dp"
                 android:src="@drawable/name"/>
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="8"
+                android:layout_weight="15"
                 android:text="Student Full Name"
                 android:paddingTop="15dp"
                 android:paddingLeft="5dp"
@@ -68,17 +71,17 @@
                 android:textSize="20sp"
                 android:id="@+id/profile_name"/>
         </LinearLayout>
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:id="@+id/profile_details_progress"
+            android:visibility="gone"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:id="@+id/details_container">
-            <ProgressBar
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:id="@+id/profile_details_progress"
-                android:visibility="gone"/>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
@@ -87,11 +90,13 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
+                    android:layout_marginRight="3dp"
+                    android:layout_marginEnd="3dp"
                     android:src="@drawable/nick"/>
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="8"
+                    android:layout_weight="15"
                     android:text="Nickname"
                     android:paddingTop="15dp"
                     android:paddingLeft="5dp"
@@ -108,11 +113,13 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
+                    android:layout_marginRight="3dp"
+                    android:layout_marginEnd="3dp"
                     android:src="@drawable/gender"/>
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="8"
+                    android:layout_weight="15"
                     android:text="Male/Female"
                     android:paddingTop="15dp"
                     android:paddingLeft="5dp"
@@ -130,11 +137,13 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
+                    android:layout_marginRight="3dp"
+                    android:layout_marginEnd="3dp"
                     android:src="@drawable/matric"/>
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="8"
+                    android:layout_weight="15"
                     android:text="13/30GC000"
                     android:paddingTop="15dp"
                     android:paddingLeft="5dp"
@@ -151,11 +160,13 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
+                    android:layout_marginRight="3dp"
+                    android:layout_marginEnd="3dp"
                     android:src="@drawable/email"/>
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="8"
+                    android:layout_weight="15"
                     android:text="student@email.com"
                     android:paddingTop="15dp"
                     android:paddingLeft="5dp"
@@ -172,11 +183,13 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
+                    android:layout_marginRight="3dp"
+                    android:layout_marginEnd="3dp"
                     android:src="@drawable/phone"/>
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="8"
+                    android:layout_weight="15"
                     android:text="08012345678"
                     android:paddingTop="15dp"
                     android:paddingLeft="5dp"
@@ -193,11 +206,13 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
+                    android:layout_marginRight="3dp"
+                    android:layout_marginEnd="3dp"
                     android:src="@drawable/facebook"/>
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="8"
+                    android:layout_weight="15"
                     android:text="facebook_username"
                     android:paddingTop="15dp"
                     android:paddingLeft="5dp"
@@ -214,11 +229,13 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
+                    android:layout_marginRight="3dp"
+                    android:layout_marginEnd="3dp"
                     android:src="@drawable/twitter"/>
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="8"
+                    android:layout_weight="15"
                     android:text="twitter_username"
                     android:paddingTop="15dp"
                     android:paddingLeft="5dp"
@@ -235,11 +252,13 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
+                    android:layout_marginRight="3dp"
+                    android:layout_marginEnd="3dp"
                     android:src="@drawable/linkedin"/>
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="8"
+                    android:layout_weight="15"
                     android:paddingTop="15dp"
                     android:paddingLeft="5dp"
                     android:textSize="15sp"
@@ -256,11 +275,13 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
+                    android:layout_marginRight="3dp"
+                    android:layout_marginEnd="3dp"
                     android:src="@drawable/instagram"/>
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="8"
+                    android:layout_weight="15"
                     android:text="instagram_username"
                     android:paddingTop="15dp"
                     android:paddingLeft="5dp"
@@ -277,11 +298,13 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
+                    android:layout_marginRight="3dp"
+                    android:layout_marginEnd="3dp"
                     android:src="@drawable/snapchat"/>
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="8"
+                    android:layout_weight="15"
                     android:text="snapchat_username"
                     android:paddingTop="15dp"
                     android:paddingLeft="5dp"
@@ -298,11 +321,13 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
+                    android:layout_marginRight="3dp"
+                    android:layout_marginEnd="3dp"
                     android:src="@drawable/bio"/>
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="8"
+                    android:layout_weight="15"
                     android:text="about me"
                     android:paddingTop="15dp"
                     android:paddingLeft="5dp"

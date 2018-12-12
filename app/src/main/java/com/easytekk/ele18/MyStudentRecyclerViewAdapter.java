@@ -7,16 +7,19 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Filter;
 import android.widget.Filterable;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.easytekk.ele18.StudentsFragment.OnListFragmentInteractionListener;
 import com.easytekk.ele18.dummy.DummyContent.DummyItem;
 import com.easytekk.ele18.models.Student;
-import com.github.siyamed.shapeimageview.CircularImageView;
+
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.regex.Pattern;
 
 /**
  * {@link RecyclerView.Adapter} that can display a {@link DummyItem} and makes a call to the
@@ -86,7 +89,7 @@ public class MyStudentRecyclerViewAdapter
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         public final View mView;
-        public final CircularImageView mImg;
+        public final ImageView mImg;
         public final TextView mName;
         public Student mStudent;
 
@@ -112,9 +115,17 @@ public class MyStudentRecyclerViewAdapter
 
                 // search content in friend list
                 for (Student student : mStudents) {
-                    if (student.getName().toLowerCase().contains(charSequence.toString().toLowerCase())) {
-                        tempList.add(student);
+                    if( Pattern.compile( "[0-9]" ).matcher( charSequence.toString() ).find()){
+                        if(student.getId().toLowerCase().contains(charSequence.toString().toLowerCase())){
+                            tempList.add(student);
+                        }
                     }
+                    else{
+                        if (student.getName().toLowerCase().contains(charSequence.toString().toLowerCase())) {
+                            tempList.add(student);
+                        }
+                    }
+
                 }
 
                 fr.count = tempList.size();
@@ -132,6 +143,16 @@ public class MyStudentRecyclerViewAdapter
             filteredList = (ArrayList<Student>) filterResults.values;
             notifyDataSetChanged();
         }
+    }
+
+    public void updateStudent(Student s){
+        int index = -1;
+        for(int i=0; i<mStudents.size(); i++){
+            if(mStudents.get(i).getId().equals(s.getId())){
+                index = i;
+            }
+        }
+        mStudents.set(index,s);
     }
 
 }
